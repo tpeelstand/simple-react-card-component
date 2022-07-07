@@ -19,57 +19,83 @@
 
     <script type="text/babel">
 // FriendLy Component
-function FriendLy() {
+function FriendLy(props) {
     const friendlyStyle = {
-            height: 300,
+            display: 'inline-block',
+            margin: 20,
+            height: 320,
             width: 200,
             padding: 0,
             backgroundColor: "#FFF",
             WebkitFilter: "dropshadow(0px 0px 5px #555)",
-            filter: "drop-shadow(0px 0px 5px #555)"
+            filter: "drop-shadow(0px 0px 5px #555)",
+            borderRadius: 10,
+            backgroundImage: "linear-gradient(#000, #FFB302)",
+            color: "#FFF"
         }
     return(
         <div style={friendlyStyle}>
-            <Avatar/>
-            <UserName/>
+            <Avatar img={props.img}/>
+            <UserName name={props.name}/>
+            <Title title={props.title}/>
             <GetConnected/>    
         </div>
     );
 }
 
 // Avatar Component
-function Avatar() {
+function Avatar(props) {
     const avatarStyle = {
-        marginLeft: 20,
+        marginLeft: 25,
         marginTop: 20,
         width: 150,
         height: 150,
-        borderRadius: "50%"
+        borderRadius: "50%",
+        border: "2px solid goldenrod"
     }
     return(
         <img
         style={avatarStyle}
-        src="https://scontent-ort2-2.xx.fbcdn.net/v/t39.30808-1/287456158_10230216721028226_4802756256569450449_n.jpg?stp=c0.0.100.100a_dst-jpg_p100x100&_nc_cat=104&ccb=1-7&_nc_sid=7206a8&_nc_eui2=AeHa5dVTvkhyGUnoePG_RtvfNw3MYUP_wvg3DcxhQ__C-NZRZrysHoWBDWR5V275kUU&_nc_ohc=uTAYa9xNTVcAX-j6g4k&_nc_ht=scontent-ort2-2.xx&oh=00_AT8K0GAw8wPLy2qE_p8G7VYBT4HO0JVLTknxsHpVUQXn6g&oe=62CC23B9" 
-        alt="Profile Picture"  />
+        src={props.img} 
+        alt="Profile Picture" />
     );
 }
 
 // UserName Component
-function UserName() {
+function UserName(props) {
     const nameStyle = {
-        fontSize: 18,
+        fontSize: 24,
+        textAlign: "center",
+        marginTop: 20,
         fontFamily: "Arial, Helvetica, sans-serif",
-        margin: 20
+        textShadow: "1px 1px 1px #333"
     }
     return(
-        <h1 style={nameStyle}>Nathan Ellingson</h1>
+    <h1 style={nameStyle}>{props.name}</h1>
     );
 }
 
+// Title Component
+function Title(props) {
+    const titleStyles = {
+        textAlign: "center",
+        fontSize: 16,
+        color: "#111",
+        fontFamily: "Arial",
+        margin: 0
+    }
+    return(
+        <h3 style={titleStyles}>{props.title}</h3>
+    );
+} 
 // GetConnected Component
 function GetConnected() {
+    const getConnectedStyle = {
+        marginLeft: 10,
+        color: "#111"
+    }
     return(
-        <div>
+        <div style={getConnectedStyle}>
             <Like/>
             <Share/>
             <Add/>
@@ -101,7 +127,39 @@ function Add() {
 }
 
 ReactDOM.render(
-    <FriendLy/>,
+    <div>
+        <FriendLy 
+    name="Nate" 
+    title="Developer"
+    img="https://scontent-ort2-2.xx.fbcdn.net/v/t39.30808-1/287456158_10230216721028226_4802756256569450449_n.jpg?stp=c0.0.100.100a_dst-jpg_p100x100&_nc_cat=104&ccb=1-7&_nc_sid=7206a8&_nc_eui2=AeHa5dVTvkhyGUnoePG_RtvfNw3MYUP_wvg3DcxhQ__C-NZRZrysHoWBDWR5V275kUU&_nc_ohc=uTAYa9xNTVcAX-j6g4k&_nc_ht=scontent-ort2-2.xx&oh=00_AT8K0GAw8wPLy2qE_p8G7VYBT4HO0JVLTknxsHpVUQXn6g&oe=62CC23B9"
+    />
+    <FriendLy 
+    name="Jenny"
+    title="Librarian" 
+    img="https://scontent-ort2-2.xx.fbcdn.net/v/t1.6435-1/117888744_10158812707946528_4729390726065544438_n.jpg?stp=dst-jpg_p200x200&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_eui2=AeEyI6WkA38URc0KhAb84AyQX4Gu3cGqiW1fga7dwaqJbeLyVrdzc5u_rV5v153xz3c&_nc_ohc=fZbNiZwL_IQAX89dwJf&_nc_ht=scontent-ort2-2.xx&oh=00_AT8H8OgJeZW4Y1RK4vQnRIk0TmZUMzYm60udzgUd1sXDnw&oe=62EB2BAE"
+    />
+    <FriendLy 
+    name="Bonji"
+    title="Rock Star"
+    img="https://scontent-ort2-2.xx.fbcdn.net/v/t39.30808-1/279216403_10224203280561949_2119660942112178145_n.jpg?stp=dst-jpg_s200x200&_nc_cat=101&ccb=1-7&_nc_sid=7206a8&_nc_eui2=AeGxcdcKJGWAauZvoDa-yBD3jv5cfthqLkiO_lx-2GouSHKNjmyYxZLamujJRFJwIVg&_nc_ohc=fRRb5FbQ-sYAX-5FC-T&_nc_ht=scontent-ort2-2.xx&oh=00_AT-JPVhZVGIq5vA2HLqKUKnOZ7qoj5s4UCBcDoomSBSxZg&oe=62CC3FD2"
+    /> 
+    <FriendLy 
+    name="Bruce"
+    title="Photographer"
+    img="https://scontent-ort2-2.xx.fbcdn.net/v/t39.30808-1/278631464_10100348493778859_6077150763449620172_n.jpg?stp=c40.0.200.200a_dst-jpg_p200x200&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_eui2=AeERx0bP1kIaZrE-Ha86YyM6IXjollN7X3cheOiWU3tfd_qrvhOGmTf5mINBp5kLrzo&_nc_ohc=EBLVcgZHqRUAX9lskOH&_nc_ht=scontent-ort2-2.xx&oh=00_AT97FocBdlKSuLo90obqnBV2J7v24IC6uRMWFmQnv57_ZA&oe=62CB22E1"
+    />   
+    <FriendLy 
+    name="Margie"
+    title="Hair Artist" 
+    img="https://scontent-ort2-2.xx.fbcdn.net/v/t39.30808-1/292592790_10218043319312962_6984659348043599056_n.jpg?stp=dst-jpg_s200x200&_nc_cat=109&ccb=1-7&_nc_sid=7206a8&_nc_eui2=AeFDV_VOK__2DmHMvRldQdwHiGN5ckSx2duIY3lyRLHZ25G3Vm5oYx0iAzbPKnEuuvY&_nc_ohc=hfUoFh0UDD8AX9Vsdwp&_nc_ht=scontent-ort2-2.xx&oh=00_AT_FJwwchquR6RJcnNAcHSvfUZDu0ug8xE150zJe08y0vA&oe=62CC5BEC"
+    /> 
+    <FriendLy 
+    name="Tracy"
+    title="Cowboy"
+    img="https://scontent-ort2-2.xx.fbcdn.net/v/t1.18169-1/484691_4469704800071_326659338_n.jpg?stp=c70.14.173.172a_dst-jpg_p200x200&_nc_cat=111&ccb=1-7&_nc_sid=7206a8&_nc_eui2=AeE2rCdPyeBoq7kH4RzJGCLXNpQ3tKGFip82lDe0oYWKnyaRHwKhhfzmbxK9KIYvEu4&_nc_ohc=jCwl9xh_hN8AX-UViD_&_nc_oc=AQlUYKoGoqq3V94tXpHSkeENr9StRpPI7E1V-0YQujMrf6mD60wRYbqnfnm374qIiKs&_nc_ht=scontent-ort2-2.xx&oh=00_AT_tWiK4mQx-B_Xc1YCul9S7W4mixQ28nAlqphrL3wdpPA&oe=62EE6D6C"
+    /> 
+    </div>,
+   
     document.getElementById('app')
 );
 
